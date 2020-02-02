@@ -8,11 +8,16 @@ import {
 import Main from "@Components/Main/Main";
 import FourOhFour from "@Views/404/404";
 import Home from "@Views/Home/Home";
+import Wall from "@Views/Wall/Wall";
 
 const routes = [
   {
     view: Home,
     path: "/home"
+  },
+  {
+    view: Wall,
+    path: "/wall"
   },
   {
     view: FourOhFour,
