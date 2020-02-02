@@ -16,6 +16,7 @@ module.exports = (env, options) => {
         ["@Components"]: path.resolve(__dirname, "./src/components/"),
         ["@Context"]: path.resolve(__dirname, "./src/context/"),
         ["@Assets"]: path.resolve(__dirname, "./src/assets/"),
+        ["@Utils"]: path.resolve(__dirname, "./src/utils/"),
         ["@Views"]: path.resolve(__dirname, "./src/views/")
       }
     },

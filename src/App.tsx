@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import Main from "@Components/Main/Main";
+import Profile from "@Views/Profile/Profile";
 import FourOhFour from "@Views/404/404";
 import Home from "@Views/Home/Home";
 import Wall from "@Views/Wall/Wall";
@@ -18,6 +19,10 @@ const routes = [
   {
     view: Wall,
     path: "/wall"
+  },
+  {
+    view: Profile,
+    path: "/profile"
   },
   {
     view: FourOhFour,

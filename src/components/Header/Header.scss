@@ -1,0 +1,11 @@
+@import "../../styles/vars.scss";
+
+.header {
+  position: fixed;
+  top: left;
+  left: 0;
+  width: 100%;
+  height: $headerHeight;
+  background-color: #fff;
+  z-index: 999;
+}
