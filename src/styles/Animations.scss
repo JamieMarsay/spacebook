@@ -1,0 +1,33 @@
+.slide {
+  &--out {
+    position: relative;
+    animation: slideOut 0.2s linear forwards;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 20%;
+  }
+  40% {
+    left: 40%;
+  }
+  60% {
+    left: 60%;
+  }
+  80% {
+    left: 80%;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+  }
+}

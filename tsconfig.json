@@ -14,7 +14,8 @@
       "@Components/*": ["components/*"],
       "@Context/*": ["context/*"],
       "@Assets/*": ["assets/*"],
-      "@Views/*": ["views/*"]
+      "@Views/*": ["views/*"],
+      "@Utils/*": ["utils/*"]
     }
   }
 }

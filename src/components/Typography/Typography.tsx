@@ -7,6 +7,7 @@ const Typography: FunctionComponent<ITypography> = ({
   variant = "p",
   capitalise,
   className,
+  size,
   text,
   bold
 }) => {
@@ -17,6 +18,7 @@ const Typography: FunctionComponent<ITypography> = ({
       className={clsx({
         "text--capitalise": capitalise,
         [`${className}`]: className,
+        [`text--${size}`]: size,
         "text--bold": bold
       })}
     >
