@@ -5,12 +5,13 @@
   box-shadow: 2px 2px 4px 1px hsla(0, 0%, 58.8%, 0.1);
   transition: box-shadow 0.2s ease-in-out;
 
-  &__heading {
-    display: flex;
+  &__header {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    justify-content: space-between;
-    align-items: center;
+  }
+
+  &__body {
+    margin-bottom: 1rem;
   }
 
   &__image {
@@ -21,5 +22,11 @@
     cursor: pointer;
     box-shadow: 3px 3px 4px 4px hsla(0, 0%, 58.8%, 0.1);
     transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &--section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

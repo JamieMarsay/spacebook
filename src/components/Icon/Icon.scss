@@ -2,6 +2,11 @@
   width: 100%;
 
   &__container {
-    width: 20px;
+    display: flex;
+    width: 25px;
+  }
+
+  &--s {
+    width: 16px;
   }
 }
