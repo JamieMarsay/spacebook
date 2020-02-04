@@ -3,5 +3,5 @@ export interface IButton {
   className?: string;
   alt?: boolean;
   icon?: string;
-  text: string;
+  text?: string;
 }
