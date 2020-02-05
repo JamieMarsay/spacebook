@@ -6,6 +6,7 @@ export interface ICard {
 }
 
 interface IPost {
+  comments: string[];
   posted: number;
   likes: number;
   text: string;

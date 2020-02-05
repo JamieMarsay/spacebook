@@ -2,23 +2,25 @@ import React, {
   FunctionComponent,
   createRef,
   useState,
-  useEffect
+  Fragment,
+  ChangeEvent
 } from "react";
 import thumbsUpActive from "@Assets/icons/thumb-up-active.svg";
 import Typography from "@Components/Typography/Typography";
+import commentIcon from "@Assets/icons/comment.svg";
+import { TextArea } from "@Components/Input/Input";
 import thumbsUp from "@Assets/icons/thumb-up.svg";
-import comment from "@Assets/icons/comment.svg";
 import Button from "@Components/Button/Button";
 import share from "@Assets/icons/Share.svg";
 import close from "@Assets/icons/close.svg";
 import Image from "@Components/Image/Image";
-import Icon from "@Components/Icon/Icon";
 import { ICard } from "./ICard";
 import "./Card.scss";
 
 const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
   const cardRef = createRef<HTMLDivElement>();
   const [liked, toggleLiked] = useState(false);
+  const [comment, setComment] = useState("");
   let [likes, setLikes] = useState(post.likes);
 
   const trigger = () => {
@@ -45,9 +47,13 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
     }
   };
 
+  const handleComment = (e: ChangeEvent<HTMLInputElement>) => {
+    setComment(e.target.value);
+  };
+
   return (
     <div className="card m--bottom-md" ref={cardRef}>
-      <div className="card--section card__header border--bottom">
+      <div className="card--section m--bottom-md">
         <div className="flex">
           <div className="card__image m--right-lg">
             <Image src={src} />
@@ -57,14 +63,17 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
             <Typography text={`Posted ${post.posted} minutes ago`} size="xs" />
           </div>
         </div>
-        <span onClick={() => trigger()}>
-          <Icon src={close} />
-        </span>
+        <Button
+          className="m--right-s"
+          action={() => trigger()}
+          icon={close}
+          alt
+        />
       </div>
       <div className="card__body">
         <Typography text={post.text} />
       </div>
-      <div className="card--section">
+      <div className="card--section card__header border--bottom">
         <div className="flex">
           <Button
             action={() => upDownVote()}
@@ -75,7 +84,7 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
           <Button
             action={() => console.log("comment")}
             className="m--right-s"
-            icon={comment}
+            icon={commentIcon}
             alt
           />
           <Button
@@ -88,6 +97,31 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
         <div>
           <Typography text={`${likes} likes`} />
         </div>
+      </div>
+      <div className="card__footer">
+        {post.comments.length > 0
+          ? post.comments.map((comment: string) => (
+              <span className="flex border--bottom p--top-s p--bottom-s flex--v-centre">
+                <div className="card__image m--right-md">
+                  <Image src={src} />
+                </div>
+                <div>
+                  <Typography
+                    className="m--bottom-xs"
+                    text={comment.name}
+                    bold
+                  />
+                  <Typography text={comment.text} />
+                </div>
+              </span>
+            ))
+          : null}
+        <TextArea
+          placeholder="Write a comment..."
+          onChange={handleComment}
+          className="width--100"
+        />
+        {comment}
       </div>
     </div>
   );

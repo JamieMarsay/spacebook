@@ -1,6 +1,12 @@
 export interface IPost {
+  comments: IComment[];
   posted: number;
   likes: number;
+  text: string;
+}
+
+interface IComment {
+  name: string;
   text: string;
 }
 
@@ -23,12 +29,28 @@ const paragraphs = [
   "I'd like to order one large sofa chair with extra chair please. high chair, no no no recliner... and wheelchair on half. ",
   "Because the world is full of idiots that don't understand what's important. And they'll tear us apart, Morty. But if you stick with me, I'm gonna accomplish great things, Morty. And you're gonna be part of them. And together, we're gonna run around, Morty. We're gonna- do all kinds of wonderful things, Morty. Just you and me, Morty. The outside world is our enemy, Morty. We're the only friends we've got, Morty. It's just Rick and Morty. Rick and Morty and their adventures, Morty. Rick and Morty forever and forever. 100 years, Rick and Morty's things. Me and Rick and Morty running around, and Rick and Morty time. All day long forever. All a hundred days. Rick and Morty forever a hundred times. Over and over."
 ];
+const users = ["Rick Sanchez", "Beth Smith", "Summer Smith", "Jerry Smith"];
+
+const setComments = () => {
+  const commentCount = Math.round(Math.random() * 3);
+  const comments = [];
+
+  for (let i = 1; i < commentCount; i++) {
+    comments.push({
+      name: users[Math.floor(Math.random() * users.length)],
+      text: paragraphs[i]
+    });
+  }
+
+  return comments;
+};
 
 for (let i = 1; i < paragraphs.length; i++) {
   posts[`${i}`] = {
     posted: Math.floor(Math.random() * 59),
     text: paragraphs[i],
-    likes: Math.floor(Math.random() * 15)
+    likes: Math.floor(Math.random() * 15),
+    comments: setComments()
   };
 }
 

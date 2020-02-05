@@ -1,0 +1,21 @@
+.input {
+  border: none;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: #007faa;
+    }
+  }
+
+  &__area {
+    max-width: 100%;
+    border-radius: 5px;
+    padding: 1rem 1rem 0 1rem;
+    background-color: #f2f2f2;
+  }
+}
