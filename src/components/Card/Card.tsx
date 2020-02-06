@@ -11,6 +11,7 @@ import commentIcon from "@Assets/icons/comment.svg";
 import { TextArea } from "@Components/Input/Input";
 import thumbsUp from "@Assets/icons/thumb-up.svg";
 import Button from "@Components/Button/Button";
+import morty from "@Assets/images/morty.jpg";
 import share from "@Assets/icons/Share.svg";
 import close from "@Assets/icons/close.svg";
 import Image from "@Components/Image/Image";
@@ -19,8 +20,10 @@ import "./Card.scss";
 
 const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
   const cardRef = createRef<HTMLDivElement>();
+  const [allComments, setAllComments] = useState(post.comments);
   const [liked, toggleLiked] = useState(false);
   const [comment, setComment] = useState("");
+  const [error, setError] = useState(false);
   let [likes, setLikes] = useState(post.likes);
 
   const trigger = () => {
@@ -49,6 +52,22 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
 
   const handleComment = (e: ChangeEvent<HTMLInputElement>) => {
     setComment(e.target.value);
+  };
+
+  const postComment = () => {
+    if (comment.length) {
+      const commentToAdd = {
+        name: "Morty Smith",
+        text: comment,
+        image: morty
+      };
+
+      setAllComments([...allComments, commentToAdd]);
+      setComment("");
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -99,11 +118,11 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
         </div>
       </div>
       <div className="card__footer">
-        {post.comments.length > 0
-          ? post.comments.map((comment: string) => (
+        {allComments.length > 0
+          ? allComments.map((comment: string) => (
               <span className="flex border--bottom p--top-s p--bottom-s flex--v-centre">
                 <div className="card__image m--right-md">
-                  <Image src={src} />
+                  <Image src={morty} />
                 </div>
                 <div>
                   <Typography
@@ -117,11 +136,15 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
             ))
           : null}
         <TextArea
+          className="width--100 m--top-md m--bottom-md"
           placeholder="Write a comment..."
           onChange={handleComment}
-          className="width--100"
+          value={comment}
+          error={error}
         />
-        {comment}
+        <span className="flex flex--end">
+          <Button text="Post" action={() => postComment()} alt />
+        </span>
       </div>
     </div>
   );

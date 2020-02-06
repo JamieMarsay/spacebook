@@ -6,27 +6,35 @@ import clsx from "clsx";
 export const Input: FunctionComponent<IInput> = ({
   placeholder,
   className,
-  onChange
+  onChange,
+  error,
+  value
 }) => (
   <input
     className={clsx("input", {
-      [`${className}`]: className
+      [`${className}`]: className,
+      "input--error": error
     })}
     placeholder={placeholder}
     onChange={onChange}
+    value={value}
   />
 );
 
 export const TextArea: FunctionComponent<IInput> = ({
   placeholder,
   className,
-  onChange
+  onChange,
+  error,
+  value
 }) => (
   <textarea
     className={clsx("input input__area", {
-      [`${className}`]: className
+      [`${className}`]: className,
+      "input--error": error
     })}
     placeholder={placeholder}
     onChange={onChange}
+    value={value}
   />
 );

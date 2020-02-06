@@ -31,3 +31,21 @@
     visibility: hidden;
   }
 }
+
+@keyframes shudder {
+  0% {
+    left: 0;
+  }
+  25% {
+    left: 10px;
+  }
+  50% {
+    left: 0;
+  }
+  75% {
+    left: 10px;
+  }
+  100% {
+    left: 0;
+  }
+}
