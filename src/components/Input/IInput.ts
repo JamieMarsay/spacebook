@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Ref } from "react";
 
 export interface IInput {
   onChange: (e: ChangeEvent<any>) => void;
@@ -6,4 +6,5 @@ export interface IInput {
   className?: string;
   error?: boolean;
   value?: string;
+  ref?: Ref<any>;
 }

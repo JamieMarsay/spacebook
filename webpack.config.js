@@ -17,7 +17,8 @@ module.exports = (env, options) => {
         ["@Context"]: path.resolve(__dirname, "./src/context/"),
         ["@Assets"]: path.resolve(__dirname, "./src/assets/"),
         ["@Utils"]: path.resolve(__dirname, "./src/utils/"),
-        ["@Views"]: path.resolve(__dirname, "./src/views/")
+        ["@Views"]: path.resolve(__dirname, "./src/views/"),
+        ["@Hooks"]: path.resolve(__dirname, "./src/hooks/")
       }
     },
     devServer: {

@@ -51,9 +51,10 @@ const HomeBody: FunctionComponent<IHome> = ({ context }) => {
           {updateList.map((user: any) => (
             <Card
               action={() => removeUpdate(user.id)}
-              title={user.name}
-              post={user.post}
-              src={user.image}
+              user={user}
+              // title={user.name}
+              // post={user.post}
+              // src={user.image}
               key={user.id}
             />
           ))}
