@@ -7,7 +7,8 @@ $sizes: (
   "xmd": 1.25rem,
   "lg": 2rem,
   "xl": 3rem,
-  "xxl": 5rem
+  "xxl": 5rem,
+  "max": 50vh
 );
 
 @each $name, $size in $sizes {

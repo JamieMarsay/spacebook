@@ -1,12 +1,13 @@
 @import "../../styles/vars.scss";
+@import "../../styles/mixins.scss";
 
 .main {
   &__inner {
-    display: flex;
-    height: 100vh;
-    margin-left: $navWidth + 1;
-    margin-right: 8rem;
-    padding-top: $headerHeight + 4;
-    padding-left: 1rem;
+    margin: 0 auto;
+    width: 80%;
+
+    @include lg {
+      width: 50%;
+    }
   }
 }

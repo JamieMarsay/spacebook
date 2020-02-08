@@ -4,13 +4,7 @@ import clsx from "clsx";
 import "./Image.scss";
 
 const Image: FunctionComponent<IImage> = ({ src, profile }) => (
-  <div
-    className={clsx("pos--rel", {
-      "image--profile": profile
-    })}
-  >
-    <img className="image" src={src} />
-  </div>
+  <img className="image" src={src} />
 );
 
 export default Image;

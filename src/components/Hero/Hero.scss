@@ -1,0 +1,45 @@
+@import "../../styles/Mixins.scss";
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-bottom: 2rem;
+
+  @include lg {
+    display: flex;
+  }
+
+  &__image {
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  &__half {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    // color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    &-inner {
+      padding: 1rem;
+    }
+  }
+
+  &__title {
+    // font-size: 32px;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+  }
+}

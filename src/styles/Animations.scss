@@ -1,3 +1,9 @@
+.to {
+  &--animate {
+    opacity: 0;
+  }
+}
+
 .slide {
   &--out {
     position: relative;
@@ -26,9 +32,43 @@
   }
   100% {
     left: 100%;
-    overflow: hidden;
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+.bring {
+  &--in {
+    position: relative;
+    animation: bringIn 0.5s ease-in-out;
+  }
+}
+
+@keyframes bringIn {
+  0% {
+    opacity: 0;
+    top: 30px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.fade {
+  animation: fade 0.5s ease-in-out;
+
+  &--out {
+    animation-direction: reverse;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

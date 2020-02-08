@@ -5,9 +5,12 @@ import Body from "./HomeBody";
 
 const Home: FunctionComponent = () => (
   <AppProvider
-    urls={[`https://rickandmortyapi.com/api/character/${randomCharacters()}`]}
+    urls={[
+      `https://rickandmortyapi.com/api/character/2`,
+      `https://rickandmortyapi.com/api/character/${randomCharacters()}`
+    ]}
     children={
-      <section className="view">
+      <section>
         <Body context={AppContext} />
       </section>
     }

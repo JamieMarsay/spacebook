@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import thumbsUpActive from "@Assets/icons/thumb-up-active.svg";
 import Typography from "@Components/Typography/Typography";
+import { useInView } from "react-intersection-observer";
 import commentIcon from "@Assets/icons/comment.svg";
 import { TextArea } from "@Components/Input/Input";
 import thumbsUp from "@Assets/icons/thumb-up.svg";
@@ -17,27 +18,28 @@ import close from "@Assets/icons/close.svg";
 import Image from "@Components/Image/Image";
 import { ICard } from "./ICard";
 import "./Card.scss";
+import clsx from "clsx";
 
 const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
-  const cardRef = createRef<HTMLDivElement>();
+  const [closed, toggleClosed] = useState(false);
+  const [slideOut, setSlide] = useState(false);
   const [allComments, setAllComments] = useState(post.comments);
   const [liked, toggleLiked] = useState(false);
   const [comment, setComment] = useState("");
   const [error, setError] = useState(false);
   let [likes, setLikes] = useState(post.likes);
+  const [testRef, inView, entry] = useInView({
+    triggerOnce: true,
+    threshold: 0.4
+  });
 
   const trigger = () => {
-    const node = cardRef.current;
+    setSlide(true);
 
-    if (node) {
-      node.classList.toggle("slide--out");
-
-      setTimeout(() => {
-        node.style.display = "none";
-
-        action && action();
-      }, 500);
-    }
+    setTimeout(() => {
+      toggleClosed(true);
+      action && action();
+    }, 450);
   };
 
   const upDownVote = () => {
@@ -70,9 +72,39 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
     }
   };
 
-  return (
-    <div className="card m--bottom-md" ref={cardRef}>
-      <div className="card--section m--bottom-md">
+  return !closed ? (
+    <div
+      className={clsx("card m--bottom-md", {
+        "bring--in": inView,
+        "to--animate": !inView,
+        "fade fade--out": slideOut,
+        "card--closed": closed
+      })}
+      ref={testRef}
+    >
+      <div className="card__image pos--rel">
+        <div className="card__half">
+          <div className="p--all-md">
+            <Typography
+              className="m--bottom-xs"
+              text={title}
+              variant="h2"
+              size="xl"
+            />
+            <Typography
+              text={`Posted ${post.posted} minutes ago`}
+              size="md"
+              bold
+            />
+          </div>
+        </div>
+        <Image src={src} />
+      </div>
+      <div className="p--all-md">
+        <Typography text={post.text} />
+      </div>
+
+      {/* <div className="card--section m--bottom-md">
         <div className="flex">
           <div className="card__image m--right-lg">
             <Image src={src} />
@@ -145,9 +177,9 @@ const Card: FunctionComponent<ICard> = ({ src, title, action, post }) => {
         <span className="flex flex--end">
           <Button text="Post" action={() => postComment()} alt />
         </span>
-      </div>
+      </div> */}
     </div>
-  );
+  ) : null;
 };
 
 export default Card;

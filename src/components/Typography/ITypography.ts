@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 
 export interface ITypography {
-  size?: "xl" | "lg" | "md" | "s" | "xs";
+  size?: "xs" | "s" | "md" | "lg" | "xl" | "xxl" | "xxxl";
   text: string | number;
   variant?: ElementType;
   capitalise?: boolean;
