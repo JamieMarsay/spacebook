@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from "react";
 import Typography from "@Components/Typography/Typography";
-import { IUsesPost } from "./ICard";
+import { ICardBody } from "./ICard";
 
-const CardBody: FunctionComponent<IUsesPost> = ({ post }) => {
-  return (
-    <div className="p--all-md">
-      <Typography text={post.text} className="m--bottom-md" />
-    </div>
-  );
-};
-
+const CardBody: FunctionComponent<ICardBody> = ({ post, inView }) => (
+  <div className="card__body card--section">
+    <Typography text={post.text} />
+  </div>
+);
 export default CardBody;

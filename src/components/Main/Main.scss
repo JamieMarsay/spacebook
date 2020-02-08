@@ -5,9 +5,5 @@
   &__inner {
     margin: 0 auto;
     width: 80%;
-
-    @include lg {
-      width: 50%;
-    }
   }
 }

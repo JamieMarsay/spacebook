@@ -12,6 +12,10 @@ export interface ICardHeader extends IUsesPost {
   title: string;
 }
 
+export interface ICardBody extends IUsesPost {
+  inView: boolean;
+}
+
 export interface ICardFooter extends IUsesPost {
   inView: boolean;
 }

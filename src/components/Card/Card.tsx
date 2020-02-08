@@ -24,17 +24,24 @@ const Card: FunctionComponent<ICard> = ({ action, user }) => {
 
   return !closed ? (
     <div
-      className={clsx("card m--bottom-md", {
+      className={clsx("card m--bottom-lg", {
         "fade fade--out": slideOut,
-        "to--animate": !inView,
-        "card--closed": closed,
-        "bring--in": inView
+        // "to--animate": !inView,
+        "card--closed": closed
+        // "bring--in": inView
       })}
       ref={cardRef}
     >
       <Header post={post} title={user.name} inView={inView} image={image} />
-      <Body post={post} />
-      <Footer post={post} inView={inView} />
+      <div
+        className={clsx("card__inner", {
+          "to--animate": !inView,
+          "bring--in": inView
+        })}
+      >
+        <Body post={post} inView={inView} />
+        <Footer post={post} inView={inView} />
+      </div>
     </div>
   ) : null;
 };

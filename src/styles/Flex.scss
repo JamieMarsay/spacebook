@@ -17,7 +17,15 @@
     flex-direction: column;
   }
 
+  &--v-start {
+    align-items: flex-start;
+  }
+
   &--end {
     justify-content: flex-end;
+  }
+
+  &--one {
+    flex: 1;
   }
 }

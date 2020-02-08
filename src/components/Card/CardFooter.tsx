@@ -60,8 +60,8 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
   };
 
   return (
-    <div className="width--100">
-      <div className="flex flex--between p--right-md p--bottom-md p--left-md">
+    <div className="card__footer card--section">
+      <div className="flex flex--between p--bottom-md">
         <div className="flex">
           <Button
             action={() => upDownVote()}
@@ -83,31 +83,30 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
           />
         </div>
         <div>
-          <Typography text={`${likes} likes`} />
+          <Typography
+            text={`${likes} likes & ${allComments.length} comments`}
+          />
         </div>
       </div>
-      <div className="row">
-        {allComments.length > 0
-          ? allComments.map(comment => (
-              <div className="col-xs-12" key={comment.text}>
-                <span className="flex border--top p--all-md">
-                  <div className="card__comment-image m--right-md">
-                    {inView ? <Image src={morty} /> : null}
-                  </div>
-                  <div className="card__comment">
-                    <Typography
-                      className="m--bottom-xs"
-                      text={comment.name}
-                      bold
-                    />
-                    <Typography text={comment.text} />
-                  </div>
-                </span>
+      {allComments.length > 0 ? (
+        <div className="card__comments">
+          {allComments.map(comment => (
+            <div
+              className="flex flex--v-start border--top p--top-md p--bottom-md"
+              key={comment.text}
+            >
+              <div className="card__comment-image m--right-md">
+                {inView ? <Image src={morty} /> : null}
               </div>
-            ))
-          : null}
-      </div>
-      <div className="p--all-md border--top">
+              <div className="card__comment">
+                <Typography className="m--bottom-xs" text={comment.name} bold />
+                <Typography text={comment.text} />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : null}
+      <div className="border--top p--top-md">
         <TextArea
           placeholder="Write a comment..."
           onChange={handleComment}
