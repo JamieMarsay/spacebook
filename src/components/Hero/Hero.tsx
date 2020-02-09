@@ -22,14 +22,13 @@ const Hero: FunctionComponent<IHero> = ({ title, subtitle, image }) => {
   if (window.scrollY) heroOpacityHandler();
 
   return (
-    <div className="hero bring--in" ref={heroRef}>
+    <div className="hero flex flex--stack bring--in" ref={heroRef}>
       <Typography
-        className="hero__title bring--in"
+        className="hero__title bring--in m--bottom-md"
         text={title}
         variant="h1"
         size="xxxl"
       />
-
       {subtitle ? (
         <Typography
           className="hero__subtitle bring--in"
@@ -37,12 +36,6 @@ const Hero: FunctionComponent<IHero> = ({ title, subtitle, image }) => {
           variant="h3"
         />
       ) : null}
-      {/* 
-      {image ? (
-        <div className="hero__image">
-          <Image src={image} />
-        </div>
-      ) : null} */}
     </div>
   );
 };

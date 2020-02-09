@@ -60,7 +60,7 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
   };
 
   return (
-    <div className="card__footer card--section">
+    <div className="card__footer card--section p--top-lg">
       <div className="flex flex--between p--bottom-md">
         <div className="flex">
           <Button
@@ -110,13 +110,13 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
         <TextArea
           placeholder="Write a comment..."
           onChange={handleComment}
-          className="width--100"
+          className="width--100 m--bottom-md"
           value={comment}
           error={error}
           ref={textRef}
         />
         <span className="flex flex--end">
-          <Button text="Post" action={() => postComment()} alt />
+          <Button text="Post" action={() => postComment()} />
         </span>
       </div>
     </div>

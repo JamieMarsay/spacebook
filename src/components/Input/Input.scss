@@ -10,14 +10,15 @@
     outline: none;
 
     &::placeholder {
-      color: #007faa;
+      color: #4da0ff;
     }
   }
 
   &__area {
-    max-width: 700px;
-    font-family: inherit;
+    max-width: 780px;
     max-height: 200px;
+    border-radius: 5px;
+    font-family: inherit;
   }
 
   &--error {

@@ -7,9 +7,12 @@ import React, {
 import Typography from "@Components/Typography/Typography";
 import pickleRick from "@Assets/images/picklerick.gif";
 import Button from "@Components/Button/Button";
+import Header from "@Components/Header/Header";
+import Select from "@Components/Select/Select";
 import { getRandomPost } from "@Utils/posts";
 import Card from "@Components/Card/Card";
 import Hero from "@Components/Hero/Hero";
+import { todaysDate } from "@Utils/date";
 import { IHome } from "./IHome";
 
 const HomeBody: FunctionComponent<IHome> = ({ context }) => {
@@ -36,39 +39,46 @@ const HomeBody: FunctionComponent<IHome> = ({ context }) => {
     setSort(filter);
     setUpdateList(
       updateList.sort((a: any, b: any) =>
-        e.target.value === "likes"
+        e.target.value === "Likes"
           ? b.post.likes - a.post.likes
-          : a.post[`${filter}`] - b.post[`${filter}`]
+          : a.post[`${filter.toLowerCase()}`] -
+            b.post[`${filter.toLowerCase()}`]
       )
     );
   };
 
   return (
     <Fragment>
-      <Hero title="News Feed" />
+      <Hero title="News Feed" subtitle={`${todaysDate}`} />
+      <Header
+        title={`${updateList.length} New posts`}
+        children={
+          <Select onChange={handleSort} options={["Posted", "Likes"]} />
+        }
+      />
+
       {updateList.length > 0 ? (
         <Fragment>
           {updateList.map((user: any) => (
             <Card
               action={() => removeUpdate(user.id)}
               user={user}
-              // title={user.name}
-              // post={user.post}
-              // src={user.image}
               key={user.id}
             />
           ))}
-          <Button
-            className="width--100"
-            text="Back to top"
-            action={() =>
-              window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "smooth"
-              })
-            }
-          />
+          <div className="centre">
+            <Button
+              className="width--100"
+              text="Back to top"
+              action={() =>
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth"
+                })
+              }
+            />
+          </div>
         </Fragment>
       ) : (
         <div className="flex flex--v-centre flex--centre flex--stack">
@@ -82,64 +92,7 @@ const HomeBody: FunctionComponent<IHome> = ({ context }) => {
           <img style={{ width: "250px" }} src={pickleRick} />
         </div>
       )}
-      {/* <div
-        className={`m--top-max ${inView ? "bring--in" : "to--animate"}`}
-        ref={testRef}
-      >
-        <Typography text={`News Feed Posts`} />
-        <Typography text={`12 Posts`} />
-      </div> */}
     </Fragment>
-    // <div className="m--bottom-xl">
-    //   <div className="flex flex--between flex--v-centre">
-    //     <Typography
-    //       text={`News Feed - ${updateList.length} Posts`}
-    //       className="m--bottom-md"
-    //       variant="h1"
-    //       size="xl"
-    //       bold
-    //     />
-    //     <select onChange={handleSort} value={sort}>
-    //       <option>posted</option>
-    //       <option>likes</option>
-    //     </select>
-    //   </div>
-    //   {updateList.length > 0 ? (
-    //     <Fragment>
-    //       {updateList.map((user: any) => (
-    //         <Card
-    //           action={() => removeUpdate(user.id)}
-    //           title={user.name}
-    //           post={user.post}
-    //           src={user.image}
-    //           key={user.id}
-    //         />
-    //       ))}
-    //       <Button
-    //         className="width--100"
-    //         text="Back to top"
-    //         action={() =>
-    //           window.scrollTo({
-    //             top: 0,
-    //             left: 0,
-    //             behavior: "smooth"
-    //           })
-    //         }
-    //       />
-    //     </Fragment>
-    //   ) : (
-    //     <div className="flex flex--v-centre flex--centre flex--stack">
-    //       <Typography
-    //         className="m--top-xl m--bottom-xl"
-    //         text="You're all caught up!"
-    //         variant="h2"
-    //         size="lg"
-    //         bold
-    //       />
-    //       <img style={{ width: "250px" }} src={pickleRick} />
-    //     </div>
-    //   )}
-    // </div>
   );
 };
 
