@@ -22,7 +22,7 @@ const routes = [
   },
   {
     view: Profile,
-    path: "/profile"
+    path: "/profile/:userId"
   },
   {
     view: FourOhFour,

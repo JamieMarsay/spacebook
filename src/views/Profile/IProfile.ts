@@ -1,5 +1,5 @@
 import { Context } from "react";
 
-export interface ISidebar {
+export interface IProfileBody {
   context: Context<any>;
 }

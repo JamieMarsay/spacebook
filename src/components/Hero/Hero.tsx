@@ -1,8 +1,8 @@
-import React, { FunctionComponent, createRef } from "react";
+import React, { FunctionComponent, createRef, Fragment } from "react";
+import Typography from "@Components/Typography/Typography";
 import Image from "@Components/Image/Image";
 import { IHero } from "./IHero";
 import "./Hero.scss";
-import Typography from "@Components/Typography/Typography";
 
 const Hero: FunctionComponent<IHero> = ({ title, subtitle, image }) => {
   const heroRef = createRef<HTMLDivElement>();
@@ -22,20 +22,25 @@ const Hero: FunctionComponent<IHero> = ({ title, subtitle, image }) => {
   if (window.scrollY) heroOpacityHandler();
 
   return (
-    <div className="hero flex flex--stack bring--in" ref={heroRef}>
-      <Typography
-        className="hero__title bring--in m--bottom-md"
-        text={title}
-        variant="h1"
-        size="xxxl"
-      />
-      {subtitle ? (
-        <Typography
-          className="hero__subtitle bring--in"
-          text={subtitle}
-          variant="h3"
-        />
-      ) : null}
+    <div
+      className="hero flex flex--stack flex--centre flex--v-centre bring--in"
+      ref={heroRef}
+    >
+      {image ? (
+        <Image src={image} caption={title} alt="Rick and Morty" hero />
+      ) : (
+        <Fragment>
+          <Typography
+            className="hero__title bring--in m--bottom-md"
+            text={title}
+            variant="h1"
+            size="xxxl"
+          />
+          {subtitle ? (
+            <Typography className="bring--in" text={subtitle} variant="h3" />
+          ) : null}
+        </Fragment>
+      )}
     </div>
   );
 };

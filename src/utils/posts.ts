@@ -1,14 +1,4 @@
-export interface IPost {
-  comments: IComment[];
-  posted: number;
-  likes: number;
-  text: string;
-}
-
-interface IComment {
-  name: string;
-  text: string;
-}
+import { IPost } from "@Types/post";
 
 // Generate posts
 export const posts: { [key: string]: IPost } = {};
