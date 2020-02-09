@@ -1,40 +1,20 @@
-export interface IUsesPost {
-  post: IPost;
-}
+import { IPost } from "@Types/post";
 export interface ICard {
-  action?: () => void;
-  user: IUser;
-}
-
-export interface ICardHeader extends IUsesPost {
-  inView: boolean;
-  image: string;
+  userId?: number;
+  image?: string;
   title: string;
-}
-
-export interface ICardBody extends IUsesPost {
-  inView: boolean;
-}
-
-export interface ICardFooter extends IUsesPost {
-  inView: boolean;
-}
-
-interface IUser {
-  location: string;
-  image: string;
-  name: string;
   post: IPost;
 }
 
-interface IPost {
-  comments: IComment[];
-  posted: number;
-  likes: number;
-  text: string;
+export interface ICardHeader extends ICard {
+  inView: boolean;
 }
 
-export interface IComment {
-  text: string;
-  name: string;
+export interface ICardBody {
+  post: IPost;
+}
+
+export interface ICardFooter {
+  inView: boolean;
+  post: IPost;
 }

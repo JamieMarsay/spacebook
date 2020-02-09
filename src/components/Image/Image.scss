@@ -1,10 +1,55 @@
+@import "../../styles/Mixins.scss";
+
 .image {
   display: block;
-  width: 100%;
   border-radius: inherit;
 
+  &__container {
+    overflow: hidden;
+    max-width: 400px;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+    @include sm {
+      width: 280px;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    @include sm {
+      width: 340px;
+      height: 340px;
+    }
+  }
+
+  &--hero {
+    @include sm {
+      width: 400px;
+    }
+  }
+
   &--profile {
-    width: 140px;
-    margin: 0 auto;
+    width: 50px;
+    border-radius: 10px;
+  }
+
+  &--loading {
+    width: 340px;
+    height: 340px;
+    background-color: #333;
+
+    & .image__container {
+      height: 340px;
+    }
   }
 }

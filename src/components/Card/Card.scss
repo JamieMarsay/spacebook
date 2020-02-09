@@ -1,9 +1,6 @@
 @import "../../styles/Mixins.scss";
 
 .card {
-  position: relative;
-  min-height: 325px;
-
   @include sm {
     display: flex;
   }
@@ -12,40 +9,12 @@
     display: flex;
   }
 
-  &__image {
-    position: relative;
-    width: 375px;
-    height: 295px;
+  &__link {
+    margin-bottom: 1rem;
 
     @include sm {
-      width: 325px;
-      height: 325px;
       margin-right: 1rem;
-      border-radius: 5px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    }
-
-    &-overlay {
-      display: flex;
-      align-items: flex-end;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.25);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-
-      @include sm {
-        border-radius: 5px;
-      }
-    }
-
-    &--loading {
-      width: 100%;
-      height: 100%;
-      background-color: #f2f2f2;
+      margin-bottom: 0;
     }
   }
 
@@ -60,17 +29,17 @@
     background-color: #fff;
 
     @include sm {
-      padding: 2rem;
-      border-radius: 5px;
+      padding: 1.25rem;
+      border-radius: 10px;
     }
-  }
-
-  &__comments {
-    overflow: scroll;
   }
 
   &__comment {
     flex: 1;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 
     @include sm {
       flex: none;

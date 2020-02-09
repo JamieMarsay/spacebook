@@ -1,15 +1,21 @@
 import React from "react";
-import Typography from "@Components/Typography/Typography";
+import { AppProvider, AppContext } from "@Context/AppProvider/AppProvider";
+import { useParams } from "react-router-dom";
+import Body from "./ProfileBody";
 
-const Profile = () => (
-  <section className="view">
-    <Typography
-      className="m--bottom-md"
-      text="User Profile"
-      variant="h1"
-      bold
+const Profile = () => {
+  const { userId } = useParams();
+
+  return (
+    <AppProvider
+      urls={[`https://rickandmortyapi.com/api/character/${userId}`]}
+      children={
+        <section>
+          <Body context={AppContext} />
+        </section>
+      }
     />
-  </section>
-);
+  );
+};
 
 export default Profile;

@@ -5,10 +5,6 @@
     justify-content: center;
   }
 
-  &--v-centre {
-    align-items: center;
-  }
-
   &--between {
     justify-content: space-between;
   }
@@ -17,12 +13,20 @@
     flex-direction: column;
   }
 
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--v-centre {
+    align-items: center;
+  }
+
   &--v-start {
     align-items: flex-start;
   }
 
-  &--end {
-    justify-content: flex-end;
+  &--v-end {
+    align-items: flex-end;
   }
 
   &--one {

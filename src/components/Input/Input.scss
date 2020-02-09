@@ -14,16 +14,10 @@
     }
   }
 
-  &__area {
-    max-width: 780px;
-    max-height: 200px;
-    border-radius: 5px;
-    font-family: inherit;
-  }
-
   &--error {
     position: relative;
     border-color: red;
+    border-radius: 5px;
     animation: shudder 0.25s ease-in-out;
 
     &::placeholder {

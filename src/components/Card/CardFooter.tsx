@@ -7,8 +7,8 @@ import React, {
 import thumbsUpActive from "@Assets/icons/thumb-up-active.svg";
 import Typography from "@Components/Typography/Typography";
 import commentIcon from "@Assets/icons/comment.svg";
-import { TextArea } from "@Components/Input/Input";
 import thumbsUp from "@Assets/icons/thumb-up.svg";
+import { Input } from "@Components/Input/Input";
 import Button from "@Components/Button/Button";
 import morty from "@Assets/images/morty.jpg";
 import share from "@Assets/icons/Share.svg";
@@ -60,7 +60,7 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
   };
 
   return (
-    <div className="card__footer card--section p--top-lg">
+    <div className="card__footer card--section">
       <div className="flex flex--between p--bottom-md">
         <div className="flex">
           <Button
@@ -89,16 +89,18 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
         </div>
       </div>
       {allComments.length > 0 ? (
-        <div className="card__comments">
+        <div className="card__comments p--top-md m--bottom-md border--top">
           {allComments.map(comment => (
-            <div
-              className="flex flex--v-start border--top p--top-md p--bottom-md"
-              key={comment.text}
-            >
-              <div className="card__comment-image m--right-md">
-                {inView ? <Image src={morty} /> : null}
-              </div>
-              <div className="card__comment">
+            <div className="flex flex--v-start" key={comment.text}>
+              {inView ? (
+                <Image
+                  alt="User profile picture"
+                  className="m--right-md"
+                  src={morty}
+                  profile
+                />
+              ) : null}
+              <div className="card__comment m--bottom-md">
                 <Typography className="m--bottom-xs" text={comment.name} bold />
                 <Typography text={comment.text} />
               </div>
@@ -107,10 +109,10 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
         </div>
       ) : null}
       <div className="border--top p--top-md">
-        <TextArea
+        <Input
+          className="width--100 m--bottom-md"
           placeholder="Write a comment..."
           onChange={handleComment}
-          className="width--100 m--bottom-md"
           value={comment}
           error={error}
           ref={textRef}
