@@ -7,6 +7,8 @@ export interface IPost {
 }
 
 export interface IComment {
+  userId: number;
+  image: string;
   name: string;
   text: string;
 }

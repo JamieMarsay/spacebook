@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import Image from "@Components/Image/Image";
+import Link from "@Components/Link/Link";
 import { ICardHeader } from "./ICard";
 import clsx from "clsx";
 
@@ -11,18 +12,19 @@ const CardHeader: FunctionComponent<ICardHeader> = ({
 }) =>
   image ? (
     <div className="card__header">
-      <a
-        className={clsx("card__link width--100", {})}
-        aria-label="To user's profile"
+      <Link
+        className="card__link width--100"
         href={`/profile/${userId}`}
-      >
-        <Image
-          subtitle={`Posted ${post.posted} minutes ago`}
-          alt="Character image"
-          caption={title}
-          src={image}
-        />
-      </a>
+        label="To user's profile"
+        children={
+          <Image
+            subtitle={`Posted ${post.posted} minutes ago`}
+            alt="Character image"
+            caption={title}
+            src={image}
+          />
+        }
+      />
     </div>
   ) : null;
 

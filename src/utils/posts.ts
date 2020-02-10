@@ -1,4 +1,8 @@
 import { IPost } from "@Types/post";
+import rickPic from "@Assets/images/rick.jpg";
+import summerPic from "@Assets/images/summer.jpg";
+import bethPic from "@Assets/images/beth.jpg";
+import jerryPic from "@Assets/images/jerry.jpg";
 
 // Generate posts
 export const posts: { [key: string]: IPost } = {};
@@ -19,7 +23,28 @@ const paragraphs = [
   "I'd like to order one large sofa chair with extra chair please. high chair, no no no recliner... and wheelchair on half. ",
   "Because the world is full of idiots that don't understand what's important. And they'll tear us apart, Morty. But if you stick with me, I'm gonna accomplish great things, Morty. And you're gonna be part of them. And together, we're gonna run around, Morty. We're gonna- do all kinds of wonderful things, Morty. Just you and me, Morty. The outside world is our enemy, Morty. We're the only friends we've got, Morty. It's just Rick and Morty. Rick and Morty and their adventures, Morty. Rick and Morty forever and forever. 100 years, Rick and Morty's things. Me and Rick and Morty running around, and Rick and Morty time. All day long forever. All a hundred days. Rick and Morty forever a hundred times. Over and over."
 ];
-const users = ["Rick Sanchez", "Beth Smith", "Summer Smith", "Jerry Smith"];
+const users = [
+  {
+    name: "Rick Sanchez",
+    userId: 1,
+    image: rickPic
+  },
+  {
+    name: "Summer Smith",
+    userId: 3,
+    image: summerPic
+  },
+  {
+    name: "Beth Smith",
+    userId: 4,
+    image: bethPic
+  },
+  {
+    name: "Jerry Smith",
+    userId: 5,
+    image: jerryPic
+  }
+];
 
 const setComments = () => {
   const commentCount = Math.round(Math.random() * 3);
@@ -27,8 +52,8 @@ const setComments = () => {
 
   for (let i = 1; i < commentCount; i++) {
     comments.push({
-      name: users[Math.floor(Math.random() * users.length)],
-      text: paragraphs[i]
+      ...users[Math.floor(Math.random() * users.length)],
+      text: paragraphs[Math.floor(Math.random() * paragraphs.length)]
     });
   }
 

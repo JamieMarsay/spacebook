@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 
 export interface ILink {
-  children: ReactNode;
+  children: ReactNode | string;
+  className?: string;
   label: string;
   href: string;
 }

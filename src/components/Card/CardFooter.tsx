@@ -13,6 +13,7 @@ import Button from "@Components/Button/Button";
 import morty from "@Assets/images/morty.jpg";
 import share from "@Assets/icons/Share.svg";
 import Image from "@Components/Image/Image";
+import Link from "@Components/Link/Link";
 import { ICardFooter } from "./ICard";
 
 const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
@@ -42,7 +43,8 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
       const commentToAdd = {
         name: "Morty Smith",
         text: comment,
-        image: morty
+        image: morty,
+        userId: 2
       };
 
       setAllComments([...allComments, commentToAdd]);
@@ -93,15 +95,26 @@ const CardFooter: FunctionComponent<ICardFooter> = ({ post, inView }) => {
           {allComments.map(comment => (
             <div className="flex flex--v-start" key={comment.text}>
               {inView ? (
-                <Image
-                  alt="User profile picture"
-                  className="m--right-md"
-                  src={morty}
-                  profile
-                />
+                <Link
+                  href={`/profile/${comment.userId}`}
+                  className="m--bottom-s"
+                  label={comment.name}
+                >
+                  <Image
+                    alt="User profile picture"
+                    className="m--right-md"
+                    src={comment.image}
+                    profile
+                  />
+                </Link>
               ) : null}
               <div className="card__comment m--bottom-md">
-                <Typography className="m--bottom-xs" text={comment.name} bold />
+                <Link
+                  href={`/profile/${comment.userId}`}
+                  className="m--bottom-s"
+                  children={comment.name}
+                  label={comment.name}
+                />
                 <Typography text={comment.text} />
               </div>
             </div>
