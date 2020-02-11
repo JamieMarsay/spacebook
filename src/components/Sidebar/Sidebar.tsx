@@ -1,9 +1,15 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Typography from "@Components/Typography/Typography";
+import { ISidebar } from "./ISidebar";
 import "./Sidebar.scss";
 import clsx from "clsx";
 
-const Sidebar = ({ className, title, subtitle, children }) => (
+const Sidebar: FunctionComponent<ISidebar> = ({
+  className,
+  children,
+  subtitle,
+  title
+}) => (
   <aside
     className={clsx("sidebar", {
       [`${className}`]: className

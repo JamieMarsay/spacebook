@@ -64,7 +64,7 @@ const ProfileBody: FunctionComponent<IProfileBody> = ({ context }) => {
             children={
               <div className="row">
                 {users.map((user: IUser) => (
-                  <div className="col-lg-4">
+                  <div className="col-lg-4" key={user.id}>
                     <Link
                       href={`/profile/${user.id}`}
                       label={user.name}
