@@ -11,7 +11,7 @@ import thumbsUp from "@Assets/icons/thumb-up.svg";
 import { Input } from "@Components/Input/Input";
 import Button from "@Components/Button/Button";
 import morty from "@Assets/images/morty.jpg";
-import share from "@Assets/icons/Share.svg";
+import share from "@Assets/icons/share.svg";
 import Image from "@Components/Image/Image";
 import Link from "@Components/Link/Link";
 import { ICardFooter } from "./ICard";
